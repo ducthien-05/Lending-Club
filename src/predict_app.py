@@ -3,14 +3,14 @@ import joblib
 import pandas as pd
 
 # Load mô hình và các đối tượng
-model = joblib.load("loan_default_model.pkl")
-ordinal = joblib.load("ordinal_encoder.pkl")
-ohe = joblib.load("onehot_encoder.pkl")
-scaler = joblib.load("scaler.pkl")
-nominal_feature = joblib.load("nominal_features.pkl")
-ordinal_feature = joblib.load("ordinal_features.pkl")
-num_feature = joblib.load("numerical_features.pkl")
-feature_names = joblib.load("feature_names.pkl")
+model = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/loan_default_model.pkl")
+ordinal = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/ordinal_encoder.pkl")
+ohe = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/onehot_encoder.pkl")
+scaler = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/scaler.pkl")
+nominal_feature = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/nominal_features.pkl")
+ordinal_feature = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/ordinal_features.pkl")
+num_feature = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/numerical_features.pkl")
+feature_names = joblib.load("D:/TIN/K3N2/KPDL/Final Test/Topic 1/models/feature_names.pkl")
 
 
 def predict_default(
@@ -107,4 +107,4 @@ interface = gr.Interface(
 )
 
 # Chạy ứng dụng
-interface.launch(share=True)
+interface.launch()
