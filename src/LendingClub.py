@@ -53,7 +53,7 @@ def handle_outliers(df, num_feature):
 
 
 def train_model():
-    df = load_and_preprocess_data("train.xlsx")
+    df = load_and_preprocess_data("D:/TIN/K3N2/KPDL/Final Test/Topic 1/data/train.xlsx")
 
     num_feature = ['annual_inc', 'installment', 'fico_range_high', 'dti', 'avg_cur_bal', 'bc_open_to_buy',
                    'open_acc', 'revol_util', 'total_acc', 'total_rev_hi_lim', 'acc_open_past_24mths',
