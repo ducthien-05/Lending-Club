@@ -1,6 +1,5 @@
 import gradio as gr
 import joblib
-import numpy as np
 import pandas as pd
 
 # Load mô hình và các đối tượng
@@ -15,9 +14,9 @@ feature_names = joblib.load("feature_names.pkl")
 
 
 def predict_default(
-    annual_inc, emp_length, verification_status, term, installment, sub_grade, purpose,
-    fico_range_high, dti, avg_cur_bal, bc_open_to_buy, open_acc, revol_util, total_acc,
-    total_rev_hi_lim, acc_open_past_24mths, mort_acc, tot_hi_cred_lim, credit_years
+        annual_inc, emp_length, verification_status, term, installment, sub_grade, purpose,
+        fico_range_high, dti, avg_cur_bal, bc_open_to_buy, open_acc, revol_util, total_acc,
+        total_rev_hi_lim, acc_open_past_24mths, mort_acc, tot_hi_cred_lim, credit_years
 ):
     # Tạo DataFrame từ input
     input_dict = {
@@ -66,7 +65,7 @@ def predict_default(
     prediction = model.predict(df_scaled)[0]
 
     result_text = f"❌ Người này **CÓ NGUY CƠ VỠ NỢ** với xác suất: **{probability * 100:.2f}%**" if prediction == 1 else \
-                  f"✅ Người này **KHÔNG CÓ NGUY CƠ VỠ NỢ**, xác suất vỡ nợ chỉ là: **{probability * 100:.2f}%**"
+        f"✅ Người này **KHÔNG CÓ NGUY CƠ VỠ NỢ**, xác suất vỡ nợ chỉ là: **{probability * 100:.2f}%**"
     return result_text
 
 
@@ -76,7 +75,8 @@ interface = gr.Interface(
     inputs=[
         gr.Number(label="Thu nhập hàng năm (annual_inc)"),
         gr.Dropdown(choices=['< 1 year', '1 year', '2 years', '3 years', '4 years', '5 years',
-                             '6 years', '7 years', '8 years', '9 years', '10+ years'], label="Kinh nghiệm làm việc (emp_length)"),
+                             '6 years', '7 years', '8 years', '9 years', '10+ years'],
+                    label="Kinh nghiệm làm việc (emp_length)"),
         gr.Dropdown(choices=['Not Verified', 'Source Verified', 'Verified'], label="Trạng thái xác minh"),
         gr.Dropdown(choices=[36, 60], label="Thời hạn khoản vay (tháng)"),
         gr.Number(label="Khoản trả hàng tháng (installment)"),
@@ -86,7 +86,8 @@ interface = gr.Interface(
                              'G1', 'G2', 'G3', 'G4', 'G5'], label="Sub-grade"),
         gr.Dropdown(choices=['credit_card', 'debt_consolidation', 'home_improvement', 'educational',
                              'major_purchase', 'medical', 'car', 'vacation', 'small_business',
-                             'house', 'moving', 'renewable_energy', 'wedding', 'Other'], label="Mục đích vay (purpose)"),
+                             'house', 'moving', 'renewable_energy', 'wedding', 'Other'],
+                    label="Mục đích vay (purpose)"),
         gr.Number(label="FICO Score Cao Nhất"),
         gr.Number(label="DTI (Tỷ lệ nợ trên thu nhập)"),
         gr.Number(label="Số dư trung bình hiện tại"),
